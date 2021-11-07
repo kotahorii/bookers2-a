@@ -26,7 +26,9 @@
     <% if current_user.following?(user) %>
       <%= link_to 'フォロー外す', user_relationship_path(user, user.id), class: "btn btn-success", method: :delete %>
       <% if current_user.id != user.id %>
+      <% if current_user.followed?(user) %>
       <%= link_to 'Begin Chat', chat_path(user.id) %>
+      <% end %>
       <% end %>
     <% else %>
       <%= link_to 'フォローする', user_relationships_path(user, user.id), class: "btn btn-success", method: :post %>

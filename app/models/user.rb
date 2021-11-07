@@ -14,10 +14,14 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :follower
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
-  
+
 
   def following?(user)
     following_user.include?(user)
+  end
+
+  def followed?(user)
+    follower_user.include?(user)
   end
 
   attachment :profile_image, destroy: false
